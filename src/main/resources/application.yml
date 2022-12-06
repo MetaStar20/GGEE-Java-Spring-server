@@ -1,0 +1,42 @@
+server:
+  port : 8080
+
+#============================================================================
+# SPRING
+#============================================================================
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    url : jdbc:mysql://${db.host}:${db.port}/${db.name}?autoReconnect=${db.auto-reconnect}&useSSL=${db.ssl}&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username : ${db.username}
+    password : ${db.password}
+  jpa:
+    show-sql: true
+    properties.hibernate.format_sql: true
+    properties:
+          hibernate:
+            dialect : org.hibernate.dialect.MySQL5Dialect
+            ddl-auto : validate     # Hibernate ddl auto (create, create-drop, validate, update)
+
+#============================================================================
+# DATABASE
+#============================================================================
+db:
+  name : spring_image_gallery
+  host : 127.0.0.1
+  port : 3306
+  username : root
+  password : 
+  auto-reconnect : true
+  ssl : false
+
+
+#============================================================================
+# UPLOAD
+#============================================================================
+upload:
+  dir : ./upload/
